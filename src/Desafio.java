@@ -13,6 +13,7 @@ public class Desafio {
         String nomeCliente = "Vitor Migoto";
         String tipoConta = "Corrente";
         double saldoConta = 100;
+        double valorTransferencia = 0;
         int opcao = 0;
 
         // Exibindo dados do cliente
@@ -36,6 +37,29 @@ public class Desafio {
             System.out.println(menu);
             opcao = leitura.nextInt();
 
+            if(opcao == 1){
+                System.out.println("O Saldo atual é: R$"+ saldoConta);
+            }else if (opcao == 2){
+                System.out.println("Qual valor deseja transferir: ");
+                valorTransferencia = leitura.nextDouble();
+                if(valorTransferencia > saldoConta){
+                    System.out.println("Saldo insuficiente para realizar a transferencia!");
+                }else{
+                    saldoConta-= valorTransferencia;
+                    System.out.println("Transferência realizada com sucesso!");
+                    System.out.println("Seu saldo atual agora é: "+saldoConta);
+                    valorTransferencia = 0;
+                }
+            }else if (opcao == 3){
+                System.out.println("Qual valor a receber: ");
+                valorTransferencia = leitura.nextDouble();
+                saldoConta+= valorTransferencia;
+                System.out.println("Valor Recebido com sucesso!");
+                System.out.println("Seu saldo atual agora é: "+saldoConta);
+                valorTransferencia = 0;
+            }else if (opcao != 4){
+                System.out.println("Opção Inválida!");
+            }
         }
     }
 }
